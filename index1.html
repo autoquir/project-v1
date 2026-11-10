@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>AUTO QUIR – حجز موعد</title>
+<link rel="stylesheet" href="style1.css">
+</head>
+<body>
+<div class="w">
+<header>
+<div style="font-size:42px">🚗</div>
+<h1 id="name"></h1>
+<p>تغليف كراسي السيارات بأجود الجلود</p>
+</header>
+
+<section>
+<h2>خدماتنا</h2>
+<ul>
+<li>تغليف الكراسي بالجلد</li>
+<li>إصلاح الخياطة والإسفنج</li>
+<li>تغليف الأبواب والسقف والتابلو</li>
+</ul>
+<p class="note">الأثمنة كتحدد حسب نوع السيارة والمادة. عاود تواصل معنا باش نعطيوك تقدير.</p>
+</section>
+
+<section>
+<h2>أعمالنا</h2>
+<div class="images">
+<img src="images/brown.jpeg" alt="تغليف كرسي بالجلد البني" loading="lazy">
+<img src="images/black.jpeg" alt="تغليف كرسي بالجلد الأسود" loading="lazy">
+<img src="images/honey.jpeg" alt="تغليف كراسي بنقشة مخيطة" loading="lazy">
+</div>
+</section>
+
+<section>
+<h2>احجز موعد</h2>
+<label>الاسم</label><input id="cn" placeholder="الاسم الكامل">
+<label>رقم الهاتف</label><input id="cp" type="tel" inputmode="tel" placeholder="06 XX XX XX XX">
+<label>نوع السيارة</label><input id="cc" placeholder="مثلا: Dacia Logan 2018">
+<label>الخدمة</label>
+<select id="cs"><option>تغليف كامل بالجلد</option><option>إصلاح</option><option>تغليف السقف / الأبواب</option><option>أخرى</option></select>
+<label>اختر النهار</label><div class="row" id="days"></div>
+
+<button class="btn" id="go" disabled>أرسل الطلب عبر واتساب</button>
+<p class="note">لتأكيد طلبك يجب التواصل معنا على واتساب</p>
+</section>
+
+<section>
+<h2>تواصل معنا</h2>
+<p id="addr" style="margin:0 0 4px"></p>
+<p id="hrs" style="margin:0 0 12px;color:var(--mut)"></p>
+<div class="soc" id="soc"></div>
+</section>
+<footer>© <span id="yr"></span></footer>
+</div>
+
+<script src="script1.js"></script>
+</body>
+</html>
