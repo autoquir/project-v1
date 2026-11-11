@@ -30,7 +30,7 @@ function renderDays(){
     var d=new Date(now.getFullYear(),now.getMonth(),now.getDate()+i), k=iso(d);
     var b=document.createElement("button");b.className="chip";b.type="button";
     b.textContent=AR_D[d.getDay()]+" "+d.getDate()+"/"+(d.getMonth()+1);
-    if(CFG.closedWeekdays.index0f(d.getDay())> -1|| CFG.busy.includes(k))
+    if(CFG.closedWeekdays.index0f(d.getDay())>-1|| CFG.busy.includes(k))
     b.onclick=(function(k,b){return function(){sel.d=k;sel.label=b.textContent;[].forEach.call(box.children,function(c){c.classList.remove("on")});b.classList.add("on");check()}})(k,b);
     box.appendChild(b);
   }
