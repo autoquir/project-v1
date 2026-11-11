@@ -26,19 +26,19 @@ CFG.social.forEach(function(s){var a=document.createElement("a");a.href=s.u;a.ta
 function isBusy(k){return CFG.busy.indexOf(k)>-1}
 function renderDays(){
   var box=$("days"), now=new Date();
-  for(var i=0;i<CFG.daysAhead;i++){
-    var d=new Date(now.getFullYear(),now.getMonth(),now.getDate()+i), k=iso(d);
-    var b=document.createElement("button");b.className="chip";b.type="button";
+  for(var i=0; i<CFG.daysAhead; i++){
+    var d=new Date(now.getFullYear(), now.getMonth(), now.getDate()+i), k=iso(d);
+    
+    // إيلا كان نهار معطل أو مبرمجينا في busy، تفاداه وما ترسموش
+    if(CFG.closedWeekdays.indexOf(d.getDay()) > -1 || CFG.busy.includes(k)) {
+        continue; 
+    }
+
+    var b=document.createElement("button");
+    b.className="chip"; b.type="button";
     b.textContent=AR_D[d.getDay()]+" "+d.getDate()+"/"+(d.getMonth()+1);
-    if(CFG.closedWeekdays.index0f(d.getDay()) >-1|| CFG.busy.includes(k))
-    b.onclick=(function(k,b){return function(){sel.d=k;sel.label=b.textContent;[].forEach.call(box.children,function(c){c.classList.remove("on")});b.classList.add("on");check()}})(k,b);
+    
+    b.onclick=(function(k,b){return function(){sel.d=k;sel.label=b.textContent;[].forEach.call(box.children,function(c){c.classList.remove("sel")});b.classList.add("sel");check()};})(k,b);
+    
     box.appendChild(b);
-  }
 }
-function check(){$("go").disabled=!(sel.d&&$("cn").value.trim()&&$("cp").value.trim())}
-["cn","cp"].forEach(function(i){$(i).addEventListener("input",check)});
-$("go").onclick=function(){
-  var m="سلام، بغيت نحجز موعد.\nالاسم: "+$("cn").value.trim()+"\nالهاتف: "+$("cp").value.trim()+"\nالسيارة: "+$("cc").value.trim()+"\nالخدمة: "+$("cs").value+"\nالنهار: "+sel.label+" ("+sel.d+")";
-  window.open("https://wa.me/"+CFG.phone+"?text="+encodeURIComponent(m),"_blank");
-};
-renderDays();
