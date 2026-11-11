@@ -1,11 +1,11 @@
 // ====== عدّل هنا ======
 var CFG = {
   name: "AUTO QUIR",
-  phone: "212619840924",            // رقم واتساب بدون + وبدون 0 فالأول
+  phone: "212722387305",            // رقم واتساب بدون + وبدون 0 فالأول
   address: "El Mers Achenad",
   hours: "من الاثنين إلى السبت: 09:00 – 18:00",
   social: [
-    {t:"واتساب", u:"https://wa.me/212619840924"},
+    {t:"واتساب", u:"https://wa.me/212722387305"},
     {t:"📍 الموقع على الخريطة", u:"https://maps.app.goo.gl/9rtn7sRYdWmrC3157?g_st=ic"}
   ],
   closedWeekdays: [0],               // 0 = الأحد
