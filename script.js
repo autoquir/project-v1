@@ -25,19 +25,20 @@ CFG.social.forEach(function(s){var a=document.createElement("a");a.href=s.u;a.ta
 
 function isBusy(k){return CFG.busy.indexOf(k)>-1}
 function renderDays(){
-  var box=$("days"), now=new Date();
-  for(var i=0; i<CFG.daysAhead; i++){
-    var d=new Date(now.getFullYear(), now.getMonth(), now.getDate()+i), k=iso(d);
-    
-    // إيلا كان نهار معطل أو مبرمجينا في busy، تفاداه وما ترسموش
-    if(CFG.closedWeekdays.indexOf(d.getDay()) > -1 || CFG.busy.includes(k)) {
-        continue; 
+    var box=$("days"), now=new Date();
+    for(var i=0; i<CFG.daysAhead; i++){
+        var d=new Date(now.getFullYear(), now.getMonth(), now.getDate()+i), k=iso(d);
+        
+        if(CFG.closedWeekdays.indexOf(d.getDay()) > -1 || CFG.busy.includes(k)) {
+            continue;
+        }
+
+        var b=document.createElement("button");
+        b.className="chip"; b.type="button";
+        b.textContent=AR_D[d.getDay()]+" "+d.getDate()+"/"+(d.getMonth()+1);
+        b.onclick=(function(k,b){return function(){sel.d=k;sel.label=b.textContent;[].forEach.call(box.children,function(c){c.classList.remove("sel")});b.classList.add("sel");check()};})(k,b);
+        box.appendChild(b);
     }
-    var b=document.createElement("button");
-    b.className="chip"; b.type="button";
-    b.textContent=AR_D[d.getDay()]+" "+d.getDate()+"/"+(d.getMonth()+1);
-    
-    b.onclick=(function(k,b){return function(){sel.d=k;sel.label=b.textContent;[].forEach.call(box.children,function(c){c.classList.remove("sel")});b.classList.add("sel");check()};})(k,b);
-    
-    box.appendChild(b);
 }
+renderDays();
+
