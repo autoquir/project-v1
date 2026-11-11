@@ -1,16 +1,16 @@
 // ====== عدّل هنا ======
 var CFG = {
   name: "AUTO QUIR",
-  phone: "212722387305",            // رقم واتساب بدون + وبدون 0 فالأول
+  phone: "212619840924",            // رقم واتساب بدون + وبدون 0 فالأول
   address: "El Mers Achenad",
   hours: "من الاثنين إلى السبت: 09:00 – 18:00",
   social: [
-    {t:"واتساب", u:"https://wa.me/212722387305"},
+    {t:"واتساب", u:"https://wa.me/212619840924"},
     {t:"📍 الموقع على الخريطة", u:"https://maps.app.goo.gl/9rtn7sRYdWmrC3157?g_st=ic"}
   ],
   closedWeekdays: [0],               // 0 = الأحد
   daysAhead: 14,
-  busy: ["2026-11-15","2026-11-22"],  // نهارات معمرة (سنة-شهر-نهار)
+  busy: ["17-11-2026"],                          // نهارات معمرة، مثال: ["2026-11-12","2026-11-14"]
 };
 // =======================
 var sel = {d:null,t:null};
@@ -28,9 +28,9 @@ function renderDays(){
   var box=$("days"), now=new Date();
   for(var i=0;i<CFG.daysAhead;i++){
     var d=new Date(now.getFullYear(),now.getMonth(),now.getDate()+i), k=iso(d);
-    if(CFG.closedWeekdays.indexOf(d.getDay())>-1||isBusy(k))continue;
     var b=document.createElement("button");b.className="chip";b.type="button";
     b.textContent=AR_D[d.getDay()]+" "+d.getDate()+"/"+(d.getMonth()+1);
+    if(CFG.closedWeekdays.indexOf(d.getDay())>-1||isBusy(k))b.disabled=true;
     b.onclick=(function(k,b){return function(){sel.d=k;sel.label=b.textContent;[].forEach.call(box.children,function(c){c.classList.remove("on")});b.classList.add("on");check()}})(k,b);
     box.appendChild(b);
   }
