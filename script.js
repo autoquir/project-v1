@@ -33,7 +33,6 @@ function renderDays(){
     if(CFG.closedWeekdays.indexOf(d.getDay()) > -1 || CFG.busy.includes(k)) {
         continue; 
     }
-
     var b=document.createElement("button");
     b.className="chip"; b.type="button";
     b.textContent=AR_D[d.getDay()]+" "+d.getDate()+"/"+(d.getMonth()+1);
